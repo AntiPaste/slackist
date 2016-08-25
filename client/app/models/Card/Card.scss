@@ -1,0 +1,36 @@
+.Card {
+  display: flex;
+  height: 280px;
+  width: 200px;
+  margin: 0;
+
+  &-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-header {
+    display: flex;
+    background: red;
+    height: 40px;
+
+    &-value {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-name {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &-footer {
+    background: green;
+    margin-top: auto;
+    padding: 10px 0;
+    text-align: center;
+  }
+}

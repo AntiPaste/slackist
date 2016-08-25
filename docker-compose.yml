@@ -1,0 +1,33 @@
+database:
+  build: ./database
+  restart: always
+  container_name: slackist-database
+  ports:
+    - "8080:8080"
+    - "28015:28015"
+    - "29015:29015"
+  volumes:
+    - "/data"
+
+server:
+  build: ./server
+  restart: always
+  container_name: slackist-backend
+  links:
+    - "database:database"
+  ports:
+    - "9000:5000"
+  volumes:
+    - "./server/slackist:/slackist"
+
+client:
+  build: ./client
+  restart: always
+  container_name: slackist-frontend
+  links:
+    - "server:backend"
+  ports:
+    - "8000:8000"
+  volumes:
+    - "./client/app:/app"
+    - "/app/node_modules"
