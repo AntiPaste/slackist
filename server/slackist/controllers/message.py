@@ -1,5 +1,4 @@
-from flask import (Blueprint, flash, g, redirect, render_template, request,
-                   session, url_for)
+from flask import Blueprint, request
 
 from slackist import app
 from slackist.controllers import Helpers
@@ -7,6 +6,7 @@ from slackist.services import Message as MessageService
 
 routes = Blueprint('message', __name__, url_prefix='/messages')
 helpers = Helpers(app)
+
 
 @routes.route('')
 def list_messages():
@@ -18,9 +18,10 @@ def list_messages():
     service = MessageService(database)
 
     messages = service.list_messages()
-    response['messages'] = messages
+    response['messages'] = [message.to_json() for message in messages]
 
     return helpers.response_wrapper(response)
+
 
 @routes.route('', methods=['POST'])
 def create_message():
@@ -72,6 +73,7 @@ def create_message():
 
     return helpers.response_wrapper(response)
 
+
 @routes.route('/<message_id>')
 def get_message(message_id):
     response = {'message': None, 'errors': []}
@@ -85,6 +87,7 @@ def get_message(message_id):
     response['message'] = message.to_json()
 
     return helpers.response_wrapper(response)
+
 
 @routes.route('/<message_id>', methods=['PUT'])
 def update_message(message_id):
@@ -135,6 +138,7 @@ def update_message(message_id):
     response['message'] = message.to_json()
 
     return helpers.response_wrapper(response)
+
 
 @routes.route('/<message_id>', methods=['DELETE'])
 def delete_message(message_id):
