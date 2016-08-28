@@ -19,14 +19,11 @@ class Label(Base):
             'messages'
         ).group('label').count().ungroup().run(self._database.connection)
 
-        for row in cursor:
-            print(row)
-
         return [
             LabelModel.from_json({
                 'value': row.get('group'),
                 'count': row.get('reduction')
-            }) for row in cursor
+            }) for row in cursor if row.get('group') is not None
         ]
 
     def update(self, label_id, new_label):

@@ -1,6 +1,0 @@
-{
-  "name": "Hand",
-  "version": "0.0.0",
-  "private": true,
-  "main": "./Hand.js"
-}

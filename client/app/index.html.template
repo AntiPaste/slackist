@@ -12,11 +12,13 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/ionicons.min.css">
     <!-- End CSS -->
-    <script src="/js/jquery-2.1.4.min.js"></script>
 
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <!-- End fonts -->
   </head>
   <body>
-    <div id="love-letter-frontend"></div>
+    <div id="slackist-frontend"></div>
     <div class="clearfix"></div>
 
     <footer></footer>

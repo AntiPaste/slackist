@@ -11,6 +11,7 @@ helpers = Helpers(app)
 @routes.route('')
 def list_messages():
     response = {'messages': [], 'errors': []}
+    # time.sleep(20)
 
     logger = helpers.get_logger('list_messages')
     database = helpers.get_database(logger)

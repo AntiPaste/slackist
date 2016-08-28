@@ -1,5 +1,5 @@
 {
-  "name": "love-letter-frontend",
+  "name": "slackist-frontend",
   "version": "0.1.0",
   "description": "",
   "private": true,
@@ -9,46 +9,44 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/AntiPaste/ilmo.git"
+    "url": "git@seitsen.kulm.io:AntiPaste/slackist.git"
   },
   "author": "Independent",
   "bugs": {
-    "url": "https://github.com/AntiPaste/love-letter/issues"
+    "url": "https://seitsen.kulm.io/AntiPaste/slackist/issues"
   },
-  "homepage": "https://github.com/AntiPaste/love-letter#readme",
+  "homepage": "https://seitsen.kulm.io/AntiPaste/slackist#readme",
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
     "babel": "^6.5.2",
-    "babel-core": "^6.7.2",
-    "babel-eslint": "^5.0.0",
-    "babel-loader": "^6.2.4",
-    "babel-polyfill": "^6.9.1",
-    "babel-preset-es2015": "^6.9.0",
+    "babel-core": "^6.14.0",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.5",
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
-    "css-loader": "^0.23.1",
-    "eslint": "^2.4.0",
-    "eslint-config-airbnb": "^6.1.0",
-    "eslint-loader": "^1.3.0",
-    "eslint-plugin-react": "^4.2.3",
-    "html-webpack-plugin": "^2.12.0",
+    "css-loader": "^0.24.0",
+    "eslint": "^3.3.1",
+    "eslint-config-airbnb": "^10.0.1",
+    "eslint-loader": "^1.5.0",
+    "eslint-plugin-react": "^6.1.2",
+    "html-webpack-plugin": "^2.22.0",
     "json-loader": "^0.5.4",
-    "node-sass": "^3.4.2",
-    "sass-loader": "^3.2.0",
-    "style-loader": "^0.13.0",
-    "webpack": "^1.12.14",
-    "webpack-dev-server": "1.14.1"
+    "node-sass": "^3.8.0",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^2.1.0-beta.21",
+    "webpack-dev-server": "^2.1.0-beta.0"
   },
   "dependencies": {
-    "classnames": "^2.2.3",
-    "bluebird": "^3.3.4",
+    "bluebird": "^3.4.3",
+    "classnames": "^2.2.5",
     "flux": "^2.1.1",
+    "history": "^3.0.0",
+    "moment": "^2.14.1",
     "page": "^1.7.1",
-    "popsicle": "^5.0.0",
-    "popsicle-status": "^1.0.1",
-    "react": "^0.14.7",
-    "react-addons-linked-state-mixin": "0.14.7",
-    "react-dom": "^0.14.7",
-    "react-tooltip": "^1.1.4",
-    "history": "^2.0.1"
+    "react": "^15.3.1",
+    "react-custom-scrollbars": "^4.0.0",
+    "react-dom": "^15.3.1"
   }
 }

@@ -1,4 +1,5 @@
 import re
+from datetime import datetime, timezone
 
 from slackist.models import Base
 
@@ -7,6 +8,7 @@ class Message(Base):
     identifier = None
     label = None
     content = None
+    created = None
 
     @staticmethod
     def create_from_text(text):
@@ -24,6 +26,7 @@ class Message(Base):
         else:
             message.content = text
 
+        message.created = datetime.now(timezone.utc)
         return message
 
     @staticmethod
@@ -37,6 +40,7 @@ class Message(Base):
         message.identifier = data.get('id')
         message.label = data.get('label')
         message.content = data.get('content')
+        message.created = data.get('created')
 
         return message
 
@@ -44,7 +48,8 @@ class Message(Base):
         data = {
             'id': self.identifier,
             'label': self.label,
-            'content': self.content
+            'content': self.content,
+            'created': self.created
         }
 
         for key in skip:

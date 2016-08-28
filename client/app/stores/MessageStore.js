@@ -1,7 +1,11 @@
 import { ReduceStore } from 'flux/utils';
 import ActionTypes from '../actions/ActionTypes';
 
+import Message from '../models/Message';
+
+
 class MessageStore extends ReduceStore {
+
   constructor(dispatcher) {
     super(dispatcher);
 
@@ -10,8 +14,9 @@ class MessageStore extends ReduceStore {
 
   getInitialState() {
     return {
-      messages: {},
-      nextMessageID: 1,
+      messages: [],
+      filterLabel: null,
+      getAllInProgress: false,
     };
   }
 
@@ -22,37 +27,29 @@ class MessageStore extends ReduceStore {
     return Object.assign({}, state);
   }
 
-  [ActionTypes.MESSAGES_ADD](state, action) {
-    const { nextMessageID } = state;
-    state.messages[nextMessageID] = action.message;
-    state.nextMessageID++;
+  [ActionTypes.MESSAGE_GET_ALL_START](state) {
+    state.getAllInProgress = true;
   }
 
-  [ActionTypes.MESSAGES_CLEAR](state) {
-    const { messages } = state;
-    const newMessages = {};
-
-    Object.keys(messages).forEach((key) => {
-      const message = messages[key];
-      if (!message.future) return;
-
-      message.future = false;
-      newMessages[key] = message;
-    });
-
-    state.messages = newMessages;
+  [ActionTypes.MESSAGE_GET_ALL_SUCCESS](state, action) {
+    state.messages = action.messages.map((message) => new Message(message));
+    state.getAllInProgress = false;
   }
 
-  [ActionTypes.MESSAGES_EXPIRE](state, action) {
-    const { messages } = state;
-    const newMessages = {};
-
-    Object.keys(messages).forEach((key) => {
-      if (key !== action.id) newMessages[key] = messages[key];
-    });
-
-    state.messages = newMessages;
+  [ActionTypes.MESSAGE_GET_ONE_SUCCESS](state, action) {
+    state.messages.push(new Message(action.message));
   }
+
+  [ActionTypes.MESSAGE_DELETE_ONE_SUCCESS](state, action) {
+    state.messages = state.messages.filter((message) => (
+      message.id !== action.message.id
+    ));
+  }
+
+  [ActionTypes.MESSAGE_SET_FILTER_LABEL](state, action) {
+    state.filterLabel = action.label;
+  }
+
 }
 
 export default MessageStore;

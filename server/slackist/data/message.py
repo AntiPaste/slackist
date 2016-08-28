@@ -38,10 +38,12 @@ class Message(Base):
 
     def update(self, message_id, new_message):
         """ Updates an existing message object """
+        new_message_json = new_message.to_json(skip=('id',))
+
         response = self._database.db.table(
             'messages'
         ).get(message_id).update(
-            new_message.to_json()
+            new_message_json
         ).run(self._database.connection)
 
         if response['errors'] != 0:

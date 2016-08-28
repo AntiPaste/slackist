@@ -1,48 +1,61 @@
 import React from 'react';
 import classnames from 'classnames';
 
+
 const Loading = React.createClass({
+
   propTypes: {
+    size: React.PropTypes.number,
+    color: React.PropTypes.string,
     loading: React.PropTypes.bool,
     placeholder: React.PropTypes.string,
   },
 
-  _getContent() {
-    const classes = classnames(
+  getDefaultProps() {
+    return {
+      size: 1,
+      color: '#FFFFFF',
+      loading: true,
+    };
+  },
+
+  render() {
+    const { size, color, loading, placeholder } = this.props;
+
+    const loadingClasses = classnames(
       'loading', {
-        'hidden-xs-up': !this.props.loading,
+        'hidden-xs-up': !loading,
+      }
+    );
+
+    const placeholderClasses = classnames({
+      invisible: loading,
+    });
+
+    const laClasses = classnames(
+      'loading-icon', 'la-ball-beat', {
+        'la-2x': size === 2,
+        'la-3x': size === 3,
       }
     );
 
     return (
-      <div className={classes}>
-        <div className='loading-wrapper'>
-          <div className='la-ball-beat'>
-            <div></div>
-            <div></div>
-            <div></div>
+      <div className='Loading'>
+        <div className={loadingClasses}>
+          <div className='loading-wrapper'>
+            <div style={{ color }} className={laClasses}>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
           </div>
         </div>
+
+        <span className={placeholderClasses}>{placeholder}</span>
       </div>
     );
   },
 
-  _getPlaceholder() {
-    const classes = classnames({
-      'invisible': this.props.loading,
-    });
-
-    return <span className={classes}>{this.props.placeholder}</span>;
-  },
-
-  render() {
-    return (
-      <div className='loading-wrapper'>
-        {this._getContent()}
-        {this._getPlaceholder()}
-      </div>
-    );
-  },
 });
 
 export default Loading;

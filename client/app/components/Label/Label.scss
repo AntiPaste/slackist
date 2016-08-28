@@ -1,0 +1,22 @@
+.Label {
+  flex: 1;
+  text-align: center;
+
+  &-label {
+    color: #5D8C9C;
+    font-weight: bold;
+    text-decoration: none;
+
+    &:visited, &:focus {
+      color: #5D8C9C;
+    }
+
+    &:hover {
+      color: #35B6E2;
+    }
+  }
+
+  &-count {
+    color: #9E9E9E;
+  }
+}

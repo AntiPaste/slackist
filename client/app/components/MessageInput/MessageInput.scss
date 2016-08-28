@@ -1,0 +1,14 @@
+.MessageInput {
+  text-align: center;
+
+  &-field {
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 5px;
+    padding: 8px 12px;
+    line-height: 1.25;
+    background-clip: padding-box;
+    outline: none;
+    color: #55595c;
+    width: 90%;
+  }
+}
