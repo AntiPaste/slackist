@@ -12,14 +12,18 @@ webpackConfig.plugins.push(
      */
     'process.env.APP_BASE_PATH': "''",
     'process.env.API_BASE_PATH': "'/api'",
-    'process.env.NODE_ENV': "'production'"
+    'process.env.NODE_ENV': "'production'",
   }),
   new webpack.optimize.DedupePlugin(),
-  new webpack.optimize.OccurenceOrderPlugin(true),
+  new webpack.optimize.OccurrenceOrderPlugin(true),
   new webpack.optimize.UglifyJsPlugin({
     compress: {
-      warnings: false
-    }
+      warnings: false,
+    },
+    output: {
+      comments: false,
+    },
+    sourceMap: false,
   }),
   new webpack.BannerPlugin('BANNER'),
   new webpack.NoErrorsPlugin()
