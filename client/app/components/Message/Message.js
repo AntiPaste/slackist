@@ -32,6 +32,7 @@ const Message = React.createClass({
       <div className='Message'>
         <div className='Message-left'>
           <img
+            alt='Avatar'
             className='Message-left-avatar'
             src='http://i.imgur.com/e9AEE.png?dateline=1405069115'
           />

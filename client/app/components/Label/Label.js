@@ -28,7 +28,7 @@ const Label = React.createClass({
           {label.value || 'Clear filter'}
         </a>
 
-        <span> </span>
+        <span>&nbsp;</span>
 
         {label.count &&
           <span className='Label-count'>({label.count})</span>

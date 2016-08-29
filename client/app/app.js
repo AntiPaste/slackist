@@ -1,7 +1,3 @@
-// --  STYLES --
-import './app.scss';
-
-
 // -- POLYFILLS --
 import 'babel-polyfill';
 
@@ -11,6 +7,10 @@ import { Dispatcher } from 'flux';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import page from 'page';
+
+
+// --  STYLES --
+import './app.scss';
 
 
 // --  UTILITIES --
@@ -38,10 +38,14 @@ const messageActionCreators = new MessageActionCreators(dispatcher, apiUtils);
 const labelStore = new LabelStore(dispatcher);
 const labelActionCreators = new LabelActionCreators(dispatcher, apiUtils);
 
+/* eslint-disable object-property-newline */
+
 const props = {
   messageStore, messageActionCreators,
   labelStore, labelActionCreators,
 };
+
+/* eslint-enable object-property-newline */
 
 
 // Log all dispatches when debugging is on.

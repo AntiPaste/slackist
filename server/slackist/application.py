@@ -22,6 +22,9 @@ def setup_application():
     logger = logging.getLogger('base')
     logger.setLevel(logging_level)
 
+    werkzeug_logger = logging.getLogger('werkzeug')
+    werkzeug_logger.setLevel(logging.INFO)
+
     filepath = args.config
 
     config = get_config(filepath)

@@ -35,7 +35,7 @@ const MessageInput = React.createClass({
 
     return (
       <div className='MessageInput'>
-        <div className='MessageInput-chooser'></div>
+        <div className='MessageInput-chooser' />
 
         <input
           className='MessageInput-field'

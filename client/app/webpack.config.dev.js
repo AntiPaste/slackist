@@ -39,8 +39,8 @@ webpackConfig.devServer = {
   proxy: {
     '/api/*': {
       target: 'http://backend:5000', // Set api path and port here
-      rewrite: function(req) {
-        req.url = req.url.replace(/^\/api/, '');
+      pathRewrite: {
+        '/api' : '',
       },
       xfwd: true,
     },

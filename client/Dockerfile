@@ -1,6 +1,6 @@
 FROM mhart/alpine-node:latest
 
-RUN apk add --update-cache build-base
+RUN apk add --update-cache build-base python
 
 WORKDIR /app
 

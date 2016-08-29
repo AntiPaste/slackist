@@ -44,9 +44,9 @@ const Loading = React.createClass({
         <div className={loadingClasses}>
           <div className='loading-wrapper'>
             <div style={{ color }} className={laClasses}>
-              <div></div>
-              <div></div>
-              <div></div>
+              <div />
+              <div />
+              <div />
             </div>
           </div>
         </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import Loading from '../Loading';
 import Message from '../Message';
@@ -15,16 +14,15 @@ const MessageList = React.createClass({
   },
 
   componentWillUpdate() {
-    const node = ReactDOM.findDOMNode(this);
     this.shouldScrollBottom = (
-      node.scrollTop + node.offsetHeight === node.scrollHeight
+      this.node &&
+      this.node.scrollTop + this.node.offsetHeight === this.node.scrollHeight
     );
   },
 
   componentDidUpdate() {
-    if (this.shouldScrollBottom) {
-      const node = ReactDOM.findDOMNode(this);
-      node.scrollTop = node.scrollHeight;
+    if (this.node && this.shouldScrollBottom) {
+      this.node.scrollTop = this.node.scrollHeight;
     }
   },
 
@@ -44,7 +42,7 @@ const MessageList = React.createClass({
     }
 
     return (
-      <div className='MessageList'>
+      <div className='MessageList' ref={node => { this.node = node; }}>
         {messages.map((message, index) => (
           <Message
             key={index}
