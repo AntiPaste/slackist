@@ -13,15 +13,22 @@ const MessageList = React.createClass({
     onDelete: React.PropTypes.func.isRequired,
   },
 
+  componentDidMount() {
+    this.hasInitialScrolled = false;
+  },
+
   componentWillUpdate() {
     this.shouldScrollBottom = (
-      this.node &&
-      this.node.scrollTop + this.node.offsetHeight === this.node.scrollHeight
+      this.node && (
+        !this.hasInitialScrolled ||
+        this.node.scrollTop + this.node.offsetHeight === this.node.scrollHeight
+      )
     );
   },
 
   componentDidUpdate() {
     if (this.node && this.shouldScrollBottom) {
+      this.hasInitialScrolled = true;
       this.node.scrollTop = this.node.scrollHeight;
     }
   },
