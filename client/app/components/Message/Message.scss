@@ -74,6 +74,15 @@
       &-content {
         word-break: break-all;
         word-wrap: break-word;
+
+        a, a:visited, a:focus {
+          color: #5D8C9C;
+          text-decoration: none;
+        }
+
+        a:hover {
+          color: #35B6E2;
+        }
       }
     }
   }

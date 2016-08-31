@@ -1,4 +1,5 @@
 import React from 'react';
+import Linkify from 'react-linkify';
 import moment from 'moment';
 
 
@@ -65,7 +66,7 @@ const Message = React.createClass({
             }
 
             <span className='Message-right-bottom-content'>
-              {message.content}
+              <Linkify>{message.content}</Linkify>
             </span>
           </div>
         </div>
