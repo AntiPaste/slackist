@@ -54,6 +54,22 @@ class LabelStore extends ReduceStore {
     }
   }
 
+  [ActionTypes.MESSAGE_DELETE_ONE_SUCCESS](state, action) {
+    if (!action.message.label) return;
+
+    const currentLabel = state.labels.find((label) => (
+      label.value === action.message.label
+    ));
+
+    if (currentLabel.count <= 1) {
+      state.labels = state.labels.filter((label) => (
+        label.value !== action.message.label
+      ));
+    } else {
+      currentLabel.count--;
+    }
+  }
+
 }
 
 export default LabelStore;
