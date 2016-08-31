@@ -61,6 +61,18 @@ class Message(Base):
 
         return message
 
+    def get_all_sorted_by_timestamp(self, direction='asc'):
+        """ Returns all message objects sorted by timestamp """
+        index = 'created'
+        if direction != 'asc':
+            index = self._database.raw.desc(index)
+
+        cursor = self._database.db.table(
+            'messages'
+        ).order_by(index=index).run(self._database.connection)
+
+        return [MessageModel.from_json(message) for message in cursor]
+
 
 class MessageInsertException(Exception):
     pass

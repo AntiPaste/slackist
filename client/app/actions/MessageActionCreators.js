@@ -9,7 +9,7 @@ class MessageActionCreators extends CommonActionCreators {
       type: ActionTypes.MESSAGE_GET_ALL_START,
     });
 
-    this._apiUtils.get('/messages')
+    this._apiUtils.get('/messages?sort=asc')
       .then((response) => {
         this._dispatcher.dispatch({
           type: ActionTypes.MESSAGE_GET_ALL_SUCCESS,

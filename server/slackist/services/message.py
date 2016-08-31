@@ -7,8 +7,12 @@ class Message(object):
         self._database = database
         self._message_data = MessageData(database)
 
-    def list_messages(self):
-        messages = self._message_data.get_all()
+    def list_messages(self, sort=None):
+        if sort:
+            messages = self._message_data.get_all_sorted_by_timestamp(sort)
+        else:
+            messages = self._message_data.get_all()
+
         return messages
 
     def create_message(self, text):

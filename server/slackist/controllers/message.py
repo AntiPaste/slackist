@@ -16,9 +16,11 @@ def list_messages():
     logger = helpers.get_logger('list_messages')
     database = helpers.get_database(logger)
 
+    sort = request.args.get('sort')
+
     service = MessageService(database)
 
-    messages = service.list_messages()
+    messages = service.list_messages(sort)
     response['messages'] = [message.to_json() for message in messages]
 
     return helpers.response_wrapper(response)

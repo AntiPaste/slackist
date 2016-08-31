@@ -9,6 +9,7 @@ class Database(object):
         self._logger = logger.getChild('database')
 
         self.db = None
+        self.raw = rethink
         self.connection = None
 
     def connect(self, **options):
@@ -49,5 +50,22 @@ class Database(object):
                 self._logger.debug('Table {} created'.format(table))
             except rethink.ReqlOpFailedError:
                 self._logger.debug('Table {} already exists'.format(table))
+
+        indexes = ({'table': 'messages', 'column': 'created'},)
+        for index in indexes:
+            table = index['table']
+            column = index['column']
+
+            try:
+                rethink.db(
+                    self._name
+                ).table(table).index_create(column).run(self._connection)
+
+                self._logger.debug(
+                    'Index {} for table {} created'.format(column, table))
+            except rethink.ReqlOpFailedError:
+                self._logger.debug(
+                    'Index {} for table {} already exists'.format(
+                        column, table))
 
         self._logger.debug('Database setup complete')
