@@ -1,5 +1,6 @@
 // -- POLYFILLS --
 import 'babel-polyfill';
+import 'whatwg-fetch';
 
 
 // --  EXTERNAL LIBRARIES --
