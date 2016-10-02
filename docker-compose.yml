@@ -3,7 +3,7 @@ database:
   restart: always
   container_name: slackist-database
   ports:
-    - "8080:8080"
+    - "7000:8080"
     - "28015:28015"
     - "29015:29015"
   volumes:
@@ -27,7 +27,7 @@ client:
   links:
     - "server:backend"
   ports:
-    - "8000:8000"
+    - "8000:8080"
   volumes:
     - "./client/app:/app"
     - "/app/node_modules"

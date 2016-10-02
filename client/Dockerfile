@@ -1,6 +1,4 @@
-FROM mhart/alpine-node:latest
-
-RUN apk add --update-cache build-base python
+FROM node:latest
 
 WORKDIR /app
 
@@ -10,4 +8,4 @@ RUN npm install
 COPY ./app /app
 COPY ./scripts/bundle.sh /app/bundle.sh
 
-CMD ["npm", "run", "watch"]
+CMD ["npm", "run", "dev"]
